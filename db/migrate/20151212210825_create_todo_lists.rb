@@ -1,6 +1,6 @@
-class CreateTodolists < ActiveRecord::Migration
+class CreateTodoLists < ActiveRecord::Migration
   def change
-    create_table :todolists do |t|
+    create_table :todo_lists do |t|
       t.string :list_name
       t.date :list_due_date
 

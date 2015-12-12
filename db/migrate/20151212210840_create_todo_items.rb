@@ -1,6 +1,6 @@
-class CreateTodoitems < ActiveRecord::Migration
+class CreateTodoItems < ActiveRecord::Migration
   def change
-    create_table :todoitems do |t|
+    create_table :todo_items do |t|
       t.date :due_date
       t.string :title
       t.text :description
