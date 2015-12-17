@@ -1,28 +1,11 @@
-User.destroy_all
-TodoList.destroy_all
+today = Date.today
+two_days_ago = Date.today - 2.days
+three_days_ago = Date.today - 3.days
+
 TodoItem.destroy_all
-Profile.destroy_all
 
-Profile.create! [
-  { first_name: "Carly", last_name: "Fiorina", birth_year: 1954, gender: "female" },
-  { first_name: "Donald", last_name: "Trump", birth_year: 1946, gender: "male" },
-  { first_name: "Ben", last_name: "Carson", birth_year: 1951, gender: "male" },
-  { first_name: "Hillary", last_name: "Clinton", birth_year: 1947, gender: "female" },
+TodoItem.create! [
+  { title: "Task 1", due_date: today, description: "very important task TEST", completed: false },
+  { title: "Task 2", due_date: two_days_ago, description: "learn ruby TEST", completed: true},
+  { title: "Task 3", due_date: three_days_ago, description: "learn Active Record TEST", completed: true}
 ]
-
-Profile.find_by!(last_name: "Fiorina").create_user(username: "Fiorina", password_digest: "123456")
-Profile.find_by!(last_name: "Trump").create_user(username: "Trump", password_digest: "123456")
-Profile.find_by!(last_name: "Carson").create_user(username: "Carson", password_digest: "123456")
-Profile.find_by!(last_name: "Clinton").create_user(username: "Clinton", password_digest: "123456")
-
-User.all.each do |user|
-  todo_list = TodoList.create!(list_name: "User TodoList", list_due_date: Time.now + 1.year.to_i)
-  user.todo_lists << todo_list
-end
-
-TodoList.all.each do |todo_list|
-  5.times do
-    todo_item = TodoItem.create!(title: "Todo Item", description: "Part of TodoList", due_date: Time.now + 1.year.to_i)
-    todo_list.todo_items << todo_item
-  end
-end
