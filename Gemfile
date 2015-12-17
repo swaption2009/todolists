@@ -50,3 +50,5 @@ group :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'capybara'
 end
+
+gem 'schema_to_scaffold', '~> 0.7.2'

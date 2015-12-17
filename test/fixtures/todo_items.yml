@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  due_date: 2015-12-12
+  due_date: 2015-12-17
   title: MyString
   description: MyText
-  complete: false
+  completed: false
+  todo_list_id: 
 
 two:
-  due_date: 2015-12-12
+  due_date: 2015-12-17
   title: MyString
   description: MyText
-  complete: false
+  completed: false
+  todo_list_id: 
