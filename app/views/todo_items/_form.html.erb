@@ -24,8 +24,8 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :completed %><br>
-    <%= f.check_box :completed %>
+    <%= f.label :completed unless @todo_item.new_record? %><br>
+    <%= f.check_box :completed unless @todo_item.new_record? %>
   </div>
   <div class="field">
     <%= f.label :todo_list_id %><br>
