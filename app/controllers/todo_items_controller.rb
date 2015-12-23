@@ -1,11 +1,13 @@
 class TodoItemsController < ApplicationController
+  before_action :set_todo_list, only: [:new, :create, :destroy]
   before_action :set_todo_item, only: [:show, :edit, :update, :destroy]
 
   # GET /todo_items
   # GET /todo_items.json
-  def index
-    @todo_items = TodoItem.all
-  end
+  # def index
+  #   @todo_list = TodoList.find(params[:todo_list_id])
+  #   @todo_items = @todo_list.todo_items
+  # end
 
   # GET /todo_items/1
   # GET /todo_items/1.json
@@ -14,7 +16,7 @@ class TodoItemsController < ApplicationController
 
   # GET /todo_items/new
   def new
-    @todo_item = TodoItem.new
+    @todo_item = @todo_list.todo_items.new
   end
 
   # GET /todo_items/1/edit
@@ -24,7 +26,7 @@ class TodoItemsController < ApplicationController
   # POST /todo_items
   # POST /todo_items.json
   def create
-    @todo_item = TodoItem.new(todo_item_params)
+    @todo_item = @todo_list.todo_item.new(todo_item_params)
 
     respond_to do |format|
       if @todo_item.save
@@ -64,7 +66,11 @@ class TodoItemsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_todo_item
-      @todo_item = TodoItem.find(params[:id])
+      @todo_item = TodoList.find(params[todo_list_id].todo_item.find(params[:id]))
+    end
+
+    def set_todo_list
+      @todo_list = TodoList.find(params[:todo_list_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
